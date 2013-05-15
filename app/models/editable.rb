@@ -4,6 +4,10 @@ class Editable
     @path = path
   end
 
+  def display_name
+    File.basename path
+  end
+
   def read
     File.read @path
   end
