@@ -1,11 +1,17 @@
 class DirTree
-  attr_reader :dir, :path
+  attr_reader :dir, :pow, :dir_path, :relative_path
 
   EXCLUDES = %w{. .. .git .keep}
 
-  def initialize(path)
-    @path = path
+  def initialize(pow, dir_path, relative_path)
+    @pow = pow
+    @dir_path = dir_path
+    @relative_path = relative_path
     @dir = Dir.open path
+  end
+
+  def path
+    @path ||= File.join pow.path, dir_path, relative_path
   end
 
   def display_name
@@ -19,7 +25,10 @@ class DirTree
       candidate_path = File.join path, e
       candidate_stat = File.stat candidate_path
       if candidate_stat.directory?
-        self.class.new candidate_path
+        [pow.path, relative_path, e].each do |f|
+          Rails.logger.info f
+        end
+        self.class.new pow, relative_path, e
       elsif candidate_stat.file?
         Editable.new candidate_path
       else

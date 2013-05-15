@@ -5,11 +5,13 @@ class Pow
   def initialize(name)
     @name = name
   end
+  
   def editable(edit_path)
     Editable.new File.join(path, edit_path)
   end
+
   def tree
-    DirTree.new path
+    DirTree.new self, '', ''
   end
 
   def path

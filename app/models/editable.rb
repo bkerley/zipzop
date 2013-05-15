@@ -1,7 +1,12 @@
 class Editable
-  attr_reader :path
-  def initialize(path)
-    @path = path
+  attr_reader :relative_path
+  def initialize(pow, path='')
+    @pow = pow
+    @relative_path = path
+  end
+
+  def path
+    File.join @pow, relative_path
   end
 
   def display_name
