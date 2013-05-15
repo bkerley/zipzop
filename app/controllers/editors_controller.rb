@@ -1,13 +1,10 @@
-class EditorsController < ApplicationController
+class EditorsController < PowsController
   def show
     # render text: path
     @data = editable.read
   end
 
   private
-  def pow
-    @pow ||= Pow.new params[:pow_id]
-  end
 
   def editable
     @editable ||= pow.editable path
