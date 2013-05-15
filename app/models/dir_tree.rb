@@ -1,7 +1,7 @@
 class DirTree
   attr_reader :dir, :path
 
-  EXCLUDES = %w{. .. .git}
+  EXCLUDES = %w{. .. .git .keep}
 
   def initialize(path)
     @path = path
