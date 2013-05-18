@@ -1,3 +1,4 @@
 %ul
   - @pows.each do |pow|
-    %li&= pow
+    %li
+      = link_to pow.name, pow_root_dir_path(pow_id: pow.name)

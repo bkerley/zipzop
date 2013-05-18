@@ -6,7 +6,7 @@ class Editable
   end
 
   def path
-    File.join @pow, relative_path
+    File.join @pow.path, relative_path
   end
 
   def display_name
@@ -14,6 +14,6 @@ class Editable
   end
 
   def read
-    File.read @path
+    File.read path
   end
 end

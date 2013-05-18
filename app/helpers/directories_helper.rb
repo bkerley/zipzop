@@ -4,7 +4,8 @@ module DirectoriesHelper
     when DirTree
       return content_tag :li, class: 'dir' do
         content_tag(:div, class: 'name') do
-          directory_link e
+          directory_link(e) +
+          h(e.inspect)
         end +
         content_tag(:ul, class: 'contents') do 
           e.entries.map {|i| directory_entry i }.join.html_safe
@@ -13,7 +14,8 @@ module DirectoriesHelper
     when Editable
       return content_tag :li, class: 'file' do
         content_tag :div, class: 'name' do
-          file_link e
+          file_link(e) +
+          h(e.inspect)
         end
       end
     end
@@ -24,6 +26,6 @@ module DirectoriesHelper
   end
 
   def file_link(entry)
-    link_to entry.display_name, pow_edit_path(id: entry.path)
+    link_to entry.display_name, pow_edit_path(id: entry.relative_path)
   end
 end
