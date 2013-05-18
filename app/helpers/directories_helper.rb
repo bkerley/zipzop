@@ -4,8 +4,7 @@ module DirectoriesHelper
     when DirTree
       return content_tag :li, class: 'dir' do
         content_tag(:div, class: 'name') do
-          directory_link(e) +
-          h(e.inspect)
+          directory_link(e)
         end +
         content_tag(:ul, class: 'contents') do 
           e.entries.map {|i| directory_entry i }.join.html_safe
@@ -14,8 +13,7 @@ module DirectoriesHelper
     when Editable
       return content_tag :li, class: 'file' do
         content_tag :div, class: 'name' do
-          file_link(e) +
-          h(e.inspect)
+          file_link(e)
         end
       end
     end
