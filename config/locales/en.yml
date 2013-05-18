@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  broken_link: The symlink %{link_path} doesn't
+    point anywhere. You might need to mount a disk
+    image.

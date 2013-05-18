@@ -12,6 +12,10 @@ class Pow
     @name = name
   end
 
+  def broken?
+    !File::Stat.new(path) rescue true
+  end
+
   def editable(edit_path)
     Editable.new self, edit_path
   end

@@ -4,7 +4,7 @@ module PowsHelper
     when DirTree
       return content_tag :li do
         content_tag(:div, class: 'dir name') do
-          directory_link(e)
+          e.display_name
         end +
         content_tag(:ul, class: 'contents') do 
           e.entries.map {|i| directory_entry i }.join.html_safe
@@ -17,10 +17,6 @@ module PowsHelper
         end
       end
     end
-  end
-
-  def directory_link(entry)
-    content_tag :a, entry.display_name, href: 'fart'
   end
 
   def file_link(entry)

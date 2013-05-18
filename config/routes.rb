@@ -1,10 +1,7 @@
 Zipzop::Application.routes.draw do
   resources :pows do
     resources :editors
-    resources :directories
     get 'edit/*id', to: 'editors#show', as: 'edit', format: 'html'
-    get 'dir/*id', to: 'directories#show', as: 'dir', format: 'html'
-    get 'dir', to: 'directories#show', id: '', as: 'root_dir', format: 'html'
   end
 
   root to: 'pows#index'
