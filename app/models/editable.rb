@@ -19,6 +19,6 @@ class Editable
 
   def mode
     extension = File.extname(path)[1..-1]
-    Mode[extension] || extension
+    Mode[extension]
   end
 end
