@@ -16,4 +16,9 @@ class Editable
   def read
     File.read path
   end
+
+  def mode
+    extension = File.extname(path)[1..-1]
+    Mode[extension] || extension
+  end
 end
