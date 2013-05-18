@@ -2,6 +2,10 @@ class Pow
   attr_reader :name
   POW_PATH = File.join(ENV['HOME'], '.pow')
 
+  def self.list
+    Dir.entries(POW_PATH) - DirTree::EXCLUDES
+  end
+
   def initialize(name)
     @name = name
   end
