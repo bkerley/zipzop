@@ -1,2 +1,4 @@
 .editor_zone
-  %textarea#editor{cols:100}&= @data
+  #editor>< 
+    :preserve
+      #{h @data}
