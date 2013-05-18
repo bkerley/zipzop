@@ -2,3 +2,10 @@
   #editor>< 
     :preserve
       #{h @data}
+= javascript_include_tag 'ace/ace.js'
+= javascript_include_tag "ace/mode-#{editable.mode}"
+= javascript_include_tag "ace/theme-twilight"
+:coffeescript
+  editor = ace.edit 'editor'
+  editor.setTheme("ace/theme/twilight")
+  editor.getSession().setMode "ace/mode/#{editable.mode}"

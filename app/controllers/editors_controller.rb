@@ -1,6 +1,6 @@
 class EditorsController < PowsController
+  helper_method :editable
   def show
-    # render text: path
     @data = editable.read
   end
 
