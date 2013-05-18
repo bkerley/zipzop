@@ -11,6 +11,6 @@ class EditorsController < PowsController
   end
 
   def path
-    @path ||= params[:id] + '.' + params[:format]
+    @path ||= params[:id]
   end
 end
