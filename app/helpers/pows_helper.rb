@@ -1,9 +1,9 @@
-module DirectoriesHelper
+module PowsHelper
   def directory_entry(e)
     case e
     when DirTree
-      return content_tag :li, class: 'dir' do
-        content_tag(:div, class: 'name') do
+      return content_tag :li do
+        content_tag(:div, class: 'dir name') do
           directory_link(e)
         end +
         content_tag(:ul, class: 'contents') do 
@@ -11,8 +11,8 @@ module DirectoriesHelper
         end
       end
     when Editable
-      return content_tag :li, class: 'file' do
-        content_tag :div, class: 'name' do
+      return content_tag :li do
+        content_tag :div, class: 'file name' do
           file_link(e)
         end
       end
@@ -24,6 +24,6 @@ module DirectoriesHelper
   end
 
   def file_link(entry)
-    link_to entry.display_name, pow_edit_path(id: entry.relative_path)
+    link_to entry.display_name, pow_edit_path(pow_id: pow_id, id: entry.relative_path)
   end
 end

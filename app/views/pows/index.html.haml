@@ -1,4 +1,24 @@
-%ul
+%table.pow_list
+  %thead
+    %tr
+      %th app
+      %th actions
+  %tbody
   - @pows.each do |pow|
-    %li
-      = link_to pow.name, pow_root_dir_path(pow_id: pow.name)
+    -if pow.broken?
+      %tr.broken
+        %td.name= pow.name
+        %td
+          .tooltip
+            .host Broken link
+            .body
+              The symlink 
+              %nobr ~/.pow/#{h pow.name} 
+              doesn't point anywhere.
+              You might need to mount a disk image or something.
+    - else
+      %tr.pow
+        %td.name= link_to pow.name, pow_root_dir_path(pow_id: pow.name)
+        %td.actions
+          =link_to 'Edit', pow_root_dir_path(pow_id: pow.name)
+          =link_to 'View', "http://#{pow.name}.dev/", target: 'blank'
