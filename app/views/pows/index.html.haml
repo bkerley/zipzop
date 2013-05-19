@@ -10,7 +10,8 @@
         %td.name= pow.name
         %td
           %span.round.alert.label Broken link
-          %span.has-tip{'data-tooltip' => true, title: t('broken_link', link_path: "~/.pow/#{pow.name}")} ?
+          %span.has-tip{'data-tooltip' => true, title: t('broken_link', link_path: "~/.pow/#{pow.name}")}
+            %i.icon-question-sign
           
     - else
       %tr.pow
