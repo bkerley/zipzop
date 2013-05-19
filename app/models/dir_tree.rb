@@ -25,9 +25,6 @@ class DirTree
       candidate_path = File.join path, e
       candidate_stat = File.stat candidate_path
       if candidate_stat.directory?
-        [pow.path, dir_path, relative_path, candidate_path, e].each do |f|
-          Rails.logger.info f
-        end
         self.class.new pow, File.join(dir_path, relative_path), e
       elsif candidate_stat.file?
         Editable.new pow, File.join(dir_path, relative_path, e)
