@@ -24,7 +24,8 @@
 %body
   =render partial: 'shared/topbar'
 
-  = yield
+  .row
+    = yield
 
   = javascript_include_tag "application"
 
