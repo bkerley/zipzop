@@ -9,9 +9,11 @@ class Editable
     File.join @pow.path, relative_path
   end
 
-  def display_name
+  def basename
     File.basename path
   end
+
+  alias_method :display_name, :basename
 
   def read
     File.read path
@@ -23,6 +25,31 @@ class Editable
     end
     extension = File.extname(path)[1..-1]
     Mode[extension]
+  end
+
+  def mime_type
+    return @mime_type if defined? @mime_type
+    
+    candidate = MIME::Types.type_for(basename).first
+    return @mime_type = candidate unless candidate.nil?
+
+    return @mime_type = MIME::Types['text/plain'].first
+  end
+
+  def binary?
+    audio? || image? || video?
+  end
+
+  def audio?
+    mime_type.media_type == 'audio'
+  end
+
+  def image?
+    mime_type.media_type == 'image'
+  end
+
+  def video?
+    mime_type.media_type == 'video'
   end
 
   private
