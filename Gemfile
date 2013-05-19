@@ -20,6 +20,8 @@ gem "font-awesome-sass-rails", "~> 3.0.2"
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'mime-types', '~> 1.22'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
