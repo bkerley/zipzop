@@ -1,7 +1,24 @@
+- content_for :topbar do
+  %section.top-bar-section
+    %ul.left
+      %li.divider
+      %li
+        = pow_link
+      %li.divider
+      %li= link_to editable.dirname
+      %li.active
+        = link_to editable.display_name
 .editor_zone
   #editor>< 
     :preserve
       #{h @data}
+  .button-bar#controls
+    %ul.button-group
+      %button.button.default Save
+      %button.button &hellip;and keep editing
+    %ul.button-group
+      %button.button.secondary Throw away changes
+      %button.button.secondary &hellip;but stay here
 = javascript_include_tag 'ace/ace.js'
 = javascript_include_tag "ace/mode-#{editable.mode}"
 = javascript_include_tag "ace/theme-twilight"
