@@ -15,6 +15,10 @@ class Editable
 
   alias_method :display_name, :basename
 
+  def dirname
+    File.dirname relative_path
+  end
+
   def read
     File.read path
   end
@@ -56,6 +60,8 @@ class Editable
   def special_file
     return case File.basename(path)
     when 'Gemfile'
+      'ruby'
+    when 'Rakefile'
       'ruby'
     when '.ruby-version'
       'text'

@@ -46,4 +46,8 @@ module PowsHelper
 
     ['file', full_type, media_type, name, mode, binary].join ' '
   end
+
+  def pow_link
+    link_to pow.name, pow_path(pow.name)
+  end
 end
