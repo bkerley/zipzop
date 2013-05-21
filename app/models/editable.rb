@@ -5,6 +5,14 @@ class Editable
     @relative_path = path
   end
 
+  def as_json(opts={})
+    {
+      display_name: display_name,
+      mode: mode,
+      binary: binary?
+    }
+  end
+
   def path
     File.join @pow.path, relative_path
   end

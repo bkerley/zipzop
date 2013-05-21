@@ -8,6 +8,14 @@ class Pow
     end
   end
 
+  def as_json(opts={})
+    opts[:exclude] ||= []
+    return {name: name, broken: true} if broken?
+    base = {name: name}
+    base[:tree] = tree unless opts[:exclude].include? :tree
+    base
+  end
+
   def initialize(name)
     @name = name
   end
