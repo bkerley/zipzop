@@ -2,6 +2,7 @@ Zipzop::Application.routes.draw do
   resources :pows do
     resources :editors
     get 'edit/*id', to: 'editors#show', as: 'edit', format: 'html'
+    get 'api_edit/*id', to: 'editors#show', as: 'api_edit', format: 'json'
   end
 
   root to: 'pows#index'
