@@ -14,11 +14,14 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+
 //= require handlebars
 //= require ember
 //= require ember-data
 //= require_self
 //= require zipzop
+
+// for more details see: http://emberjs.com/guides/application/
 Zipzop = Ember.Application.create();
 
 //= require_tree .
